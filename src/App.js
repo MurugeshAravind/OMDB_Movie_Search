@@ -8,7 +8,7 @@ function App() {
       <Fragment>
         <Routes>
           <Route exact path="/" element={<PageNotFound />} />
-          <Route path="/OMDB_Movie_Search/" element={<MovieList />} />
+          <Route path="/OMDB_Movie_Search" element={<MovieList />} />
           <Route path="/:id" element={<MovieDetails />} />
         </Routes>
       </Fragment>

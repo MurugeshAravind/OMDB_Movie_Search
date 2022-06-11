@@ -52,6 +52,7 @@ const WrapperDiv = styled.div`
 `;
 const MovieDetails = () => {
   const { id } = useParams("id");
+  console.log(id)
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {

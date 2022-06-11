@@ -11,7 +11,7 @@ const Heading = styled.h1`
   }
 `;
 const Post = styled.img.attrs((props) => ({
-  src: props.src || "",
+  src: props.src || AppConstants.DUMMY_IMAGE_PATH,
 }))`
   height: auto;
   alt: "Poster";

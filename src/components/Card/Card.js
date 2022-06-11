@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import * as AppConstants from "../../AppConstants";
 const CardWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;
@@ -39,7 +40,7 @@ const Card = (props) => {
            <>
            <Link to={`/${card.imdbID}`} style={{color: "white"}}>
            <h3><strong>{card.Title}</strong></h3>
-           <img src={card.Poster} alt="poster" width="auto" height={"auto"} img-fluid="true"></img>
+           <img src={card.Poster !== "N/A" ? card.Poster : AppConstants.DUMMY_IMAGE_PATH} alt="poster" width="300px" height="450px" img-fluid="true"></img>
            <p><big><strong>{card.Year}</strong></big></p>
            </Link>
            </>

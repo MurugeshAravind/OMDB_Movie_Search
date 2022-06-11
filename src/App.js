@@ -9,7 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageNotFound />} />
           <Route exact path="/OMDB_Movie_Search" element={<MovieList />} />
-          <Route exact path="/OMDB_Movie_Search/:id" element={<MovieDetails />} />
+          <Route path="/:id" element={<MovieDetails />} />
         </Routes>
       </Fragment>
   );

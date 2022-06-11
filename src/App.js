@@ -6,7 +6,7 @@ function App() {
   return (
       <Fragment>
         <Routes>
-          <Route path="/" element={<MovieList />} />
+          <Route exact path="/" element={<MovieList />} />
           <Route path="/:id" element={<MovieDetails />} />
         </Routes>
       </Fragment>

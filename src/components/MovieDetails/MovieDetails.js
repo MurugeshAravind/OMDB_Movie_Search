@@ -77,7 +77,7 @@ const MovieDetails = () => {
   }, [id]);
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
     <>
-      <Link to="/" style={{ fontStyle: "unset", float: "left" }}>
+      <Link to={{pathname: "/OMDB_Movie_Search"}} style={{ fontStyle: "unset", float: "left" }}>
         <big>
           <strong>Back</strong>
         </big>

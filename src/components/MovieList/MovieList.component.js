@@ -1,8 +1,8 @@
 import { useState } from "react"
-import Navigation from "../Navigation/Navigation"
-import Search from "../Search/Search";
-import Card from "../Card/Card";
-import Loader from "../Loader/Loader";
+import Navigation from "../../common/Navigation/Navigation"
+import Search from "../../common/Search/Search";
+import Card from "../../common/Card/Card";
+import Loader from "../../common/Loader/Loader";
 const MovieList = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [loaderStatus, setLoaderStatus] = useState(false);

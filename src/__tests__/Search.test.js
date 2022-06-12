@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import Router from "react-router-dom";
-import Search from "../components/Search/Search";
+import Search from "../common/Search/Search";
 
 const history = createMemoryHistory();
 const SearchComponentInstance = () => {

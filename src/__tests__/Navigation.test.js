@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import Router from "react-router-dom";
-import Navigation from "../components/Navigation/Navigation";
+import Navigation from "../common/Navigation/Navigation";
 
 const history = createMemoryHistory();
 const NavigationComponentInstance = () => {

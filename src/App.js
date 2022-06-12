@@ -1,19 +1,15 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import MovieList from "./components/MovieList/MovieList";
-import MovieDetails from "./components/MovieDetails/MovieDetails";
-import PageNotFound from "./components/PageNotFound/PageNotFound";
+import MovieList from "./components/MovieList/MovieList.component";
+import MovieDetails from "./components/MovieDetails/MovieDetails.component";
+import PageNotFound from "./common/PageNotFound/PageNotFound";
 function App() {
-  const RouteWrapper = () => {
-    const routes = useRoutes([
-      { path: "/", element: <MovieList /> },
-      { path: "/OMDB_Movie_Search", element: <MovieList /> },
-      { path: "/:id", element: <MovieDetails /> },
-      { path: "*", element: <PageNotFound /> },
-    ]);
-    return routes;
-  };
-  return <RouteWrapper />;
+  return useRoutes([
+    { path: "/", element: <MovieList /> },
+    { path: "/OMDB_Movie_Search", element: <MovieList /> },
+    { path: "/:id", element: <MovieDetails /> },
+    { path: "*", element: <PageNotFound /> },
+  ]);
 }
 
 export default App;

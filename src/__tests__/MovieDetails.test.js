@@ -1,13 +1,13 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { getByRole, render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import Router from "react-router-dom";
-import MovieDetails from "../components/MovieDetails/MovieDetails";
+import MovieDetails from "../components/MovieDetails/MovieDetails.component";
 const history = createMemoryHistory();
 
 const MovieDetailsComponentInstance = () => {
   return <Router location={history.location} navigator={history}>
-    <MovieDetails />
+    <MovieDetails data-testid="details" />
   </Router>
 }
 

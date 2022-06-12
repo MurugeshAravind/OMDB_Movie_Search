@@ -6,26 +6,16 @@ import Loader from "../Loader/Loader";
 import * as AppConstants from "../../AppConstants";
 const Heading = styled.h1`
   text-align: center;
-  @media screen and (max-width: 600px) {
-    font-size: 20px;
-  }
 `;
 const Post = styled.img.attrs((props) => ({
   src: props.src || AppConstants.DUMMY_IMAGE_PATH,
 }))`
-  height: auto;
   alt: "Poster";
   float: left;
   border: solid 1px black;
   margin-right: 1rem;
   padding: 0.5rem;
   background-color: black;
-  @media screen and (max-width: 600px) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 `;
 const Button = styled.button`
   background-color: #ccc;
@@ -44,15 +34,19 @@ const Button = styled.button`
   }
 `;
 const WrapperDiv = styled.div`
+display: block;
+margin: 2rem;
   @media screen and (max-width: 600px) {
     display: block;
     text-align: center;
-    margin: 40rem auto;
+  }
+  @media screen and (min-width: 600px) {
+    display: block;
+    text-align: center;
   }
 `;
 const MovieDetails = () => {
   const { id } = useParams("id");
-  console.log(id)
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -69,7 +63,6 @@ const MovieDetails = () => {
         movieDetails.Response === "True" &&
         Object.keys(movieDetails).length > 0
       ) {
-        console.log("movieDetails", movieDetails);
         setMovieDetails(movieDetails);
       }
     }
@@ -77,21 +70,33 @@ const MovieDetails = () => {
   }, [id]);
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
     <>
-      <Link to={{pathname: "/OMDB_Movie_Search"}} style={{ fontStyle: "unset", float: "left" }}>
-        <big>
-          <strong>Back</strong>
-        </big>
-      </Link>
-      <Heading>
-        {movieDetails.Title}
-        <pre>
-          <strong>{movieDetails.Year}</strong>* &nbsp;
-          <strong>{movieDetails.Rated}</strong>* &nbsp;
-          <strong>{movieDetails.Runtime}</strong>* &nbsp;
-        </pre>
-      </Heading>
-      <Post src={movieDetails.Poster} />
       <WrapperDiv>
+        <Link to={{ pathname: "/OMDB_Movie_Search" }}>
+          <big>
+            <strong>Home</strong>
+          </big>
+        </Link>
+        <Heading>{movieDetails.Title}</Heading>
+      </WrapperDiv>
+      <WrapperDiv>
+        <Post
+          src={
+            movieDetails.Poster !== "N/A"
+              ? movieDetails.Poster
+              : AppConstants.DUMMY_IMAGE_PATH
+          }
+        />
+      </WrapperDiv>
+
+      <WrapperDiv>
+        <p>
+          <strong>Year:</strong>&nbsp;
+          {<Button key={movieDetails.Year}>{movieDetails.Year}</Button>}
+        </p>
+        <p>
+          <strong>Rated:</strong>&nbsp;
+          {<Button key={movieDetails.Rated}>{movieDetails.Rated}</Button>}
+        </p>
         <p>
           <strong>Genre:</strong>&nbsp;
           {movieDetails.Genre.split(",").map((x) => (
@@ -123,13 +128,23 @@ const MovieDetails = () => {
         </p>
         <p>
           <strong>
-            Rating:&nbsp;<Button>{movieDetails.imdbRating}</Button>
+            Awards:&nbsp;<Button>{movieDetails.Awards}</Button>
           </strong>
         </p>
         <p>
-          <strong>
-            Awards:&nbsp;<Button>{movieDetails.Awards}</Button>
-          </strong>
+          <label htmlFor="rating">
+            <strong>OMDB Rating:</strong>
+          </label>
+          <meter
+            id="rating"
+            name="name"
+            min=""
+            low="3"
+            high="9"
+            max="10"
+            value={movieDetails.imdbRating}
+          ></meter>
+          &nbsp; {movieDetails.imdbRating}
         </p>
       </WrapperDiv>
     </>

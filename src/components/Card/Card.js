@@ -4,7 +4,15 @@ import * as AppConstants from "../../AppConstants";
 const CardWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between;
+@media only screen and (min-width: 992px) {
+    justify-content: flex-start
+}
+@media only screen and (max-width: 1200px) {
+    justify-content: space-evenly
+}
+@media only screen and (min-width: 1200px) {
+    justify-content: space-evenly
+}
 `
 const CardContent = styled.div`
 flex: 0 0 24%;
@@ -14,23 +22,20 @@ background-color: DimGray;
 margin: 1rem;
 padding: 1rem;
 @media screen and (max-width: 600px) {
-    flex-direction: row
+    margin: 1rem auto;
+    padding: 1rem;
 }
 @media screen and (min-width: 600px) {
-    flex-direction: row
-    margin: 0.5rem;
-    padding: 0.5rem; 
-}
-@media only screen and (min-width: 768px) {
-    margin: 1rem;
+    margin: 1rem auto
     padding: 1rem;
 }
 @media only screen and (min-width: 992px) {
-    margin: 0.1rem;
+    margin: 0.2rem;
     padding: 0.1rem;
 }
 @media only screen and (min-width: 1200px) {
-    flex: 0 0 0%;
+    margin: 0.1rem;
+    padding: 0.1rem;
 }
 `
 

@@ -6,16 +6,14 @@ import PageNotFound from "./components/PageNotFound/PageNotFound";
 function App() {
   const RouteWrapper = () => {
     const routes = useRoutes([
-      {path: "/", element: <MovieList />},
-      {path: "/OMDB_Movie_Search", element: <MovieList />},
-      {path: "/:id", element: <MovieDetails />},
-      {path: "*", element: <PageNotFound />}
-    ])
-    return routes
-  }
-  return (
-      <RouteWrapper />
-  );
+      { path: "/", element: <MovieList /> },
+      { path: "/OMDB_Movie_Search", element: <MovieList /> },
+      { path: "/:id", element: <MovieDetails /> },
+      { path: "*", element: <PageNotFound /> },
+    ]);
+    return routes;
+  };
+  return <RouteWrapper />;
 }
 
 export default App;

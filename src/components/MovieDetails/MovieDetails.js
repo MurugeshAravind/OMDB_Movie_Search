@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -55,21 +56,19 @@ const MovieDetails = () => {
       let movieDetails = await FetchData(
         `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`
       )
-        .then((res) => res)
-        .then((res) => res.json());
-
       setIsLoading(false);
       if (
-        movieDetails.Response === "True" &&
-        Object.keys(movieDetails).length > 0
+        movieDetails.data.Response === "True" &&
+        Object.keys(movieDetails.data).length > 0
       ) {
-        setMovieDetails(movieDetails);
+        setMovieDetails(movieDetails.data);
       }
     }
     fetchMovieDetails();
   }, [id]);
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
     <>
+    <div data-testid="details">
       <WrapperDiv>
         <Link to={{ pathname: "/OMDB_Movie_Search" }}>
           <big>
@@ -147,9 +146,11 @@ const MovieDetails = () => {
           &nbsp; {movieDetails.imdbRating}
         </p>
       </WrapperDiv>
+      </div>
     </>
   ) : (
     <Loader />
   );
+  
 };
 export default MovieDetails;

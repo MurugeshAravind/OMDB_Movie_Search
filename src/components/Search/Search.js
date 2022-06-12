@@ -32,14 +32,13 @@ const Search = (props) => {
     if (searchValue) {
       async function fetchMovieList() {
         setIsLoading(true);
-        const data = await FetchData(
+        const searchData = await FetchData(
           `${AppConstants.URL}${AppConstants.API_KEY}&s=${searchValue}&type=movie`
         )
           .then((res) => res)
-          .then((res) => res.json());
-        if (data.Response === "True") {
-          const ids = data.Search.map((o) => o.imdbID);
-          const filtered = data.Search.filter(
+        if (searchData.data.Response === "True") {
+          const ids = searchData.data.Search.map((o) => o.imdbID);
+          const filtered = searchData.data.Search.filter(
             ({ imdbID }, index) => !ids.includes(imdbID, index + 1)
           );
           setResult(filtered);

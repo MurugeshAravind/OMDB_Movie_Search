@@ -12,7 +12,6 @@ const Post = styled.img.attrs((props) => ({
   src: props.src || AppConstants.DUMMY_IMAGE_PATH,
 }))`
   alt: "Poster";
-  float: left;
   border: solid 1px black;
   margin-right: 1rem;
   padding: 0.5rem;

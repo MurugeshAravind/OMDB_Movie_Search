@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react"
 import Navigation from "../../common/Navigation/Navigation"
 import Search from "../../common/Search/Search";
@@ -16,7 +17,7 @@ const MovieList = () => {
     <Navigation />
     <Search searchResult={getSearchResults} loaderStatus={getLoaderStatus}/>
     {loaderStatus ? <Loader /> : null}
-    {!loaderStatus && searchResults && <Card poster={searchResults} />}
+    {(!loaderStatus && searchResults) ? <Card poster={searchResults} /> : null}
     </>
 }
 export default MovieList

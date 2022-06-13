@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`navigation test nav snapshot test 1`] = `
+<nav
+  className="fRzOdK"
+>
+  <h1>
+    OMDB Movie Search
+  </h1>
+</nav>
+`;

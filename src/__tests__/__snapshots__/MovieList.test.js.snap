@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movie list test suite movie list snapshot test 1`] = `
+Array [
+  <nav
+    className="fRzOdK"
+  >
+    <h1>
+      OMDB Movie Search
+    </h1>
+  </nav>,
+  <div
+    className="cknwjs"
+  >
+    <input
+      className="jAZpoL"
+      onChange={[Function]}
+      placeholder="Enter your movie name"
+      size="1em"
+      type="text"
+    />
+  </div>,
+]
+`;

@@ -75,87 +75,99 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [id]);
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
-    <>
-      <div data-testid="details">
-        <WrapperDiv>
-          <Link to={{ pathname: "/OMDB_Movie_Search" }}>
-            <big>
-              <strong>Home</strong>
-            </big>
-          </Link>
-          <Heading>{movieDetails.Title}</Heading>
-        </WrapperDiv>
-        <WrapperDiv>
-          <Post
-            src={
-              movieDetails.Poster !== "N/A"
-                ? movieDetails.Poster
-                : AppConstants.DUMMY_IMAGE_PATH
-            }
-          />
-        </WrapperDiv>
+    <div data-testid="details">
+      <WrapperDiv>
+        <Link to={{ pathname: "/OMDB_Movie_Search" }}>
+          <big>
+            <strong>Home</strong>
+          </big>
+        </Link>
+        <Heading>{movieDetails.Title}</Heading>
+      </WrapperDiv>
+      <WrapperDiv>
+        <Post
+          src={
+            movieDetails.Poster !== "N/A"
+              ? movieDetails.Poster
+              : AppConstants.DUMMY_IMAGE_PATH
+          }
+        />
+      </WrapperDiv>
 
-        <WrapperDiv>
-          <p>
-            <strong>Year:</strong>&nbsp;
-            {<Button key={movieDetails.Year}>{movieDetails.Year}</Button>}
-          </p>
-          <p>
-            <strong>Rated:</strong>&nbsp;
-            {<Button key={movieDetails.Rated}>{movieDetails.Rated}</Button>}
-          </p>
-          <p>
-            <strong>Genre:</strong>&nbsp;
-            {movieDetails.Genre.split(",").map((x) => (
+      <WrapperDiv>
+        <p>
+          <strong>Year:</strong>&nbsp;
+          {<Button key={movieDetails.Year}>{movieDetails.Year}</Button>}
+        </p>
+        <p>
+          <strong>Rated:</strong>&nbsp;
+          {<Button key={movieDetails.Rated}>{movieDetails.Rated}</Button>}
+        </p>
+        <p>
+          <strong>Genre:</strong>&nbsp;
+          {movieDetails.Genre.split(",").length > 0 ? (
+            movieDetails.Genre.split(",").map((x) => (
               <Button key={x}>{x}</Button>
-            ))}
-          </p>
-          <p>
-            <strong>Plot:</strong>&nbsp;{movieDetails.Plot}
-          </p>
-          <p>
-            <strong>Actors:</strong>&nbsp;
-            {movieDetails.Actors.split(",").map((x) => (
+            ))
+          ) : (
+            <Button>{movieDetails.Genre}</Button>
+          )}
+        </p>
+        <p>
+          <strong>Plot:</strong>&nbsp;{movieDetails.Plot}
+        </p>
+        <p>
+          <strong>Actors:</strong>&nbsp;
+          {movieDetails.Actors.split(",").length > 0 ? (
+            movieDetails.Actors.split(",").map((x) => (
               <Button key={x}>{x}</Button>
-            ))}
-          </p>
-          <p>
-            <strong>Director:</strong>&nbsp;
+            ))
+          ) : (
+            <Button>{movieDetails.Actors}</Button>
+          )}
+        </p>
+        <p>
+          <strong>Director/ Directors:</strong>&nbsp;
+          {movieDetails.Director.split(",").length > 0 ? (
+            movieDetails.Director.split(",").map((x) => (
+              <Button key={x}>{x}</Button>
+            ))
+          ) : (
             <Button>{movieDetails.Director}</Button>
-          </p>
-          <p>
-            <strong>Writer/ Writers:</strong>&nbsp;
-            {movieDetails.Writer.split(",").length ? (
-              movieDetails.Writer.split(",").map((x) => (
-                <Button key={x}>{x}</Button>
-              ))
-            ) : (
-              <Button>{movieDetails.Writer}</Button>
-            )}
-          </p>
-          <p>
-            <strong>
-              Awards:&nbsp;<Button>{movieDetails.Awards}</Button>
-            </strong>
-          </p>
-          <p>
-            <label htmlFor="rating">
-              <strong>OMDB Rating:</strong>
-            </label>
-            <meter
-              id="rating"
-              name="name"
-              min=""
-              low="3"
-              high="9"
-              max="10"
-              value={movieDetails.imdbRating}
-            ></meter>
-            &nbsp; {movieDetails.imdbRating}
-          </p>
-        </WrapperDiv>
-      </div>
-    </>
+          )}
+        </p>
+        <p>
+          <strong>Writer/ Writers:</strong>&nbsp;
+          {movieDetails.Writer.split(",").length > 0 ? (
+            movieDetails.Writer.split(",").map((x) => (
+              <Button key={x}>{x}</Button>
+            ))
+          ) : (
+            <Button>{movieDetails.Writer}</Button>
+          )}
+        </p>
+        <p>
+          <strong>
+            Awards:&nbsp;<Button>{movieDetails.Awards}</Button>
+          </strong>
+        </p>
+        <p>
+          <label htmlFor="rating">
+            <strong>OMDB Rating:</strong>
+          </label>
+          <meter
+            id="rating"
+            name="name"
+            min=""
+            low="3"
+            high="9"
+            max="10"
+            value={movieDetails.imdbRating}
+          ></meter>
+          &nbsp; {movieDetails.imdbRating}
+        </p>
+      </WrapperDiv>
+    </div>
   ) : (
     <Loader />
   );

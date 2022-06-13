@@ -15,16 +15,10 @@ const Post = styled.img.attrs((props) => ({
   background-color: black;
   border: solid 1px black;
   @media screen and (max-width: 600px) {
-    
     display: block;
     margin: 0 auto;
     padding: 0;
-  }
-  @media screen and (min-width: 600px) {
-    
-    display: block;
-    margin: 0 auto;
-    padding: 0;
+    width: 175px;
   }
 `;
 const Button = styled.button`

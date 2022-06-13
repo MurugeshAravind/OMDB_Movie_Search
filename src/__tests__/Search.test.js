@@ -7,7 +7,7 @@ import Search from "../common/Search/Search";
 const history = createMemoryHistory();
 const SearchComponentInstance = () => {
   <Router history={history.location} navigator={history}>
-    <Search dummyData={dummyData} />
+    <Search />
   </Router>;
 };
 describe("search component", () => {

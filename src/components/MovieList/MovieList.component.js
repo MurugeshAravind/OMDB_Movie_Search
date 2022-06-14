@@ -16,8 +16,7 @@ const MovieList = () => {
     return <>
     <Navigation />
     <Search searchResult={getSearchResults} loaderStatus={getLoaderStatus}/>
-    {loaderStatus ? <Loader /> : null}
-    {(!loaderStatus && searchResults) ? <Card poster={searchResults} /> : null}
+    {(!loaderStatus && searchResults) ? <Card poster={searchResults} /> : <Loader />}
     </>
 }
 export default MovieList

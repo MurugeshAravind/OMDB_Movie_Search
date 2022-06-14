@@ -152,19 +152,19 @@ const MovieDetails = () => {
           </strong>
         </p>
         <p>
-          <label htmlFor="rating">
-            <strong>OMDB Rating:</strong>
-          </label>
-          <meter
-            id="rating"
-            name="name"
-            min=""
-            low="3"
-            high="9"
-            max="10"
-            value={movieDetails.imdbRating}
-          ></meter>
-          &nbsp; {movieDetails.imdbRating}
+          <strong>OMDB Rating:</strong>
+          <Button>
+            <meter
+              id="rating"
+              name="name"
+              min=""
+              low="3"
+              high="9"
+              max="10"
+              value={movieDetails.imdbRating}
+            ></meter>
+            &nbsp;{`${movieDetails.imdbRating}`}
+          </Button>
         </p>
       </WrapperDiv>
     </div>

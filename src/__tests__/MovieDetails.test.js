@@ -1,10 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import "jest-styled-components";
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails/MovieDetails.component";
-const MovieDetailsComponent = renderer.create(<MovieDetails />).toJSON();
-describe("movie details test cases", () => {
-  test("movie detail snapshot test", () => {
-    expect(MovieDetailsComponent).toMatchSnapshot();
+describe("movie details test suite", () => {
+  test("movie details", () => {
+    const {container} = render(<MovieDetails />, {wrapper: MemoryRouter});
+    expect(container.getElementsByTagName("div")).toBeTruthy();
   })
 });

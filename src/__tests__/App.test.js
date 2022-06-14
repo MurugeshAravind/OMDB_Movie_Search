@@ -1,17 +1,11 @@
 import React from "react";
-import { Router } from "react-router-dom";
-import { render } from "@testing-library/react";
-import { createMemoryHistory } from "history";
-import App from "../App";
-const history = createMemoryHistory();
-const AppComponentInstance = () => {
-  return <Router history={history.location} navigator={history}>
-    <App />
-  </Router>;
-};
+import { MemoryRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import {App} from "../App";
 describe("App tests", () => {
   test("test app component", () => {
-    render(AppComponentInstance);
-    expect(AppComponentInstance).toBeTruthy();
+    render(<App />, {wrapper: MemoryRouter});
+    expect(screen.queryByTestId("app")).toBeTruthy();
+    expect(screen.getByText("OMDB Movie Search"));
   });
 });

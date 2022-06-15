@@ -19,16 +19,17 @@ const Input = styled.input.attrs((props) => ({
 const Search = (props) => {
   const {queryValue, page} = props
   const [searchValue, setSearchValue] = useState("");
-  const [pageValue, setPageValue] = useState("");
   const handleSearch = (e) => {
     if (e.target.value) {
       setSearchValue(e.target.value)
+      queryValue(e.target.value)
+      setPageValue(1)
+      page(1)
     } else {
       setSearchValue("")
-    }
+      queryValue("")
+    }  
   };
-  searchValue && queryValue(searchValue)
-  pageValue && page(pageValue)
   return (
     <WrapperDiv data-testid="search">
       <Input

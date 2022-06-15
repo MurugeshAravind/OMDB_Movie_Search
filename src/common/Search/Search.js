@@ -23,7 +23,6 @@ const Search = (props) => {
     if (e.target.value) {
       setSearchValue(e.target.value)
       queryValue(e.target.value)
-      setPageValue(1)
       page(1)
     } else {
       setSearchValue("")

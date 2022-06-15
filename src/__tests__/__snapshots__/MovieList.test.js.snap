@@ -11,6 +11,7 @@ Array [
   </nav>,
   <div
     className="cknwjs"
+    data-testid="search"
   >
     <input
       className="jAZpoL"
@@ -18,7 +19,11 @@ Array [
       placeholder="Enter your movie name"
       size="1em"
       type="text"
+      value=""
     />
   </div>,
+  <div
+    className="WpVzY"
+  />,
 ]
 `;

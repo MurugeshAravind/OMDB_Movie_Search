@@ -1,8 +1,5 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import FetchData from "../Api/FetchData";
-import * as AppConstants from "../../AppConstants";
 const WrapperDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -11,6 +8,7 @@ const WrapperDiv = styled.div`
 const Input = styled.input.attrs((props) => ({
   type: "text",
   size: props.size || "1em",
+  value: props.value || "",
 }))`
   border: 2px solid palevioletred;
   margin: ${(props) => props.size};
@@ -19,48 +17,25 @@ const Input = styled.input.attrs((props) => ({
 `;
 
 const Search = (props) => {
+  const {queryValue, page} = props
   const [searchValue, setSearchValue] = useState("");
-  const [result, setResult] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const { searchResult, loaderStatus } = props;
+  const [pageValue, setPageValue] = useState("");
   const handleSearch = (e) => {
-    setTimeout(() => {
-      const { value } = e.target;
-      setSearchValue(value);
-    }, 500);
-  };
-  useEffect(() => {
-    if (searchValue) {
-      async function fetchMovieList() {
-        setIsLoading(true);
-        const searchData = await FetchData(
-          `${AppConstants.URL}${AppConstants.API_KEY}&s=${searchValue}&type=movie`
-        )
-          .then((res) => res)
-        if (searchData.data.Response === "True") {
-          const ids = searchData.data.Search.map((o) => o.imdbID);
-          const filtered = searchData.data.Search.filter(
-            ({ imdbID }, index) => !ids.includes(imdbID, index + 1)
-          );
-          setResult(filtered);
-          setIsLoading(false);
-        } else {
-          setResult([]);
-          setIsLoading(false);
-        }
-      }
-      fetchMovieList();
+    if (e.target.value) {
+      setSearchValue(e.target.value)
+    } else {
+      setSearchValue("")
     }
-  }, [searchValue]);
-  useEffect(() => {
-    searchResult(result);
-  }, [result, searchResult]);
-  useEffect(() => {
-    loaderStatus(isLoading);
-  }, [isLoading, loaderStatus])
+  };
+  searchValue && queryValue(searchValue)
+  pageValue && page(pageValue)
   return (
-    <WrapperDiv>
-      <Input placeholder="Enter your movie name" onChange={handleSearch} />
+    <WrapperDiv data-testid="search">
+      <Input
+        placeholder="Enter your movie name"
+        onChange={(e) => handleSearch(e)}
+        value={searchValue}
+      />
     </WrapperDiv>
   );
 };

@@ -1,10 +1,16 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import "jest-styled-components";
+import { MemoryRouter } from "react-router-dom";
 import Search from "../common/Search/Search";
-const search = renderer.create(<Search />)
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 describe("search component", () => {
   test("test the input box in search component", () => {
-    expect(search).toMatchSnapshot();
+    render(<Search />, {wrapper: MemoryRouter});
+    expect(screen.getByTestId("search")).toBeTruthy();
+  })
+  test("Try user event", () => {
+    render(<Search />, {wrapper: MemoryRouter});
+    let input = screen.getByTestId("search");
+    expect(input.firstChild).toBeTruthy();
   })
 });

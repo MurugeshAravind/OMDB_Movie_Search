@@ -62,7 +62,10 @@ const MovieDetails = () => {
     async function fetchMovieDetails() {
       setIsLoading(true);
       let movieDetails = await FetchData(
-        `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`
+        {
+          method: "GET",
+          url: `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`
+        }
       );
       setIsLoading(false);
       if (

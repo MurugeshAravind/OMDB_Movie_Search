@@ -8,20 +8,20 @@ import useMovieSearch from "../../common/useMovieSearch";
 const MovieList = () => {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-  const { movies, hasMore, loading } = useMovieSearch(query, pageNumber);
+  const { movies, hasMore, loading, error } = useMovieSearch(query, pageNumber);
   const observer = useRef();
   const lastBookElementRef = useCallback(
     (node) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting && hasMore && !error) {
           setPageNumber((previousPageNumber) => previousPageNumber + 1);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore]
+    [loading, hasMore, error]
   );
 
   const getQueryValue = (value) => {

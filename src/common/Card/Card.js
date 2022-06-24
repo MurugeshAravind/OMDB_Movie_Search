@@ -3,33 +3,23 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as AppConstants from "../../AppConstants";
 const CardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content:space-between;
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 const CardContent = styled.div`
-flex: 0 0 24%;
-text-align: center;
-color: white;
-background-color: DimGray;
-margin: 1rem;
-padding: 1rem;
-@media screen and (max-width: 600px) {
-    margin: 1rem auto;
-    padding: 1rem;
-}
-@media screen and (min-width: 600px) {
-    margin: 1rem auto
-    padding: 1rem;
-}
-@media only screen and (min-width: 992px) {
-    margin: 0.2rem;
-    padding: 0.1rem;
-}
-@media only screen and (min-width: 1200px) {
-    margin: 0.1rem;
-    padding: 0.1rem;
-}
+  text-align: center;
+  color: white;
+  background-color: DimGray;
+  margin: 1rem;
+  @media only screen and (max-width: 600px) {
+    flex: auto
+  }
 `;
 const Card = (props) => {
   const returnCard = (card) => {
@@ -49,7 +39,7 @@ const Card = (props) => {
                 }
                 alt="poster"
                 width="300px"
-                height="450px"
+                height="400px"
                 img-fluid="true"
               ></img>
               <p>

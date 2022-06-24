@@ -1,19 +1,18 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 const WrapperDiv = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
 `;
 const Input = styled.input.attrs((props) => ({
-  type: "text",
-  size: props.size || "1em",
+  type: "search",
+  size: props.size || "1rem",
   value: props.value || "",
 }))`
   border: 2px solid palevioletred;
   margin: ${(props) => props.size};
   padding: ${(props) => props.size};
-  flex: 0.5;
 `;
 
 const Search = (props) => {

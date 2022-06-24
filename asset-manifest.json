@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/OMDB_Movie_Search/static/js/main.9f71ee7e.js",
+    "main.js": "/OMDB_Movie_Search/static/js/main.ab047988.js",
     "index.html": "/OMDB_Movie_Search/index.html",
-    "main.9f71ee7e.js.map": "/OMDB_Movie_Search/static/js/main.9f71ee7e.js.map"
+    "main.ab047988.js.map": "/OMDB_Movie_Search/static/js/main.ab047988.js.map"
   },
   "entrypoints": [
-    "static/js/main.9f71ee7e.js"
+    "static/js/main.ab047988.js"
   ]
 }

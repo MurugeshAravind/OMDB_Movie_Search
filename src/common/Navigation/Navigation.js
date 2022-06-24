@@ -9,7 +9,7 @@ const Nav = styled.nav`
 
 const Navigation = () => {
 return <Nav>
-  <h1>OMDB Movie Search</h1>
+  <h1>OMDB Search</h1>
 </Nav>
 }
 export default Navigation

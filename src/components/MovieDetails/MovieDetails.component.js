@@ -7,6 +7,7 @@ import Loader from "../../common/Loader/Loader";
 import * as AppConstants from "../../AppConstants";
 const Heading = styled.h1`
   text-align: center;
+  color: silver;
 `;
 const Post = styled.img.attrs((props) => ({
   src: props.src || AppConstants.DUMMY_IMAGE_PATH,

@@ -1,15 +1,21 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const Nav = styled.nav`
-    font-size: 1.5em;
-    text-align: center;
-    color: black;
-`
+  font-size: 1.5em;
+  text-align: center;
+  color: black;
+`;
+
+const Header = styled.h1`
+  color: silver;
+`;
 
 const Navigation = () => {
-return <Nav>
-  <h1>OMDB Search</h1>
-</Nav>
-}
-export default Navigation
+  return (
+    <Nav>
+      <Header>OMDB Search</Header>
+    </Nav>
+  );
+};
+export default Navigation;

@@ -6,6 +6,6 @@ describe("App tests", () => {
   test("test app component", () => {
     render(<App />, {wrapper: MemoryRouter});
     expect(screen.queryByTestId("app")).toBeTruthy();
-    expect(screen.getByText("OMDB Movie Search"));
+    expect(screen.getByText("OMDB Search"));
   });
 });

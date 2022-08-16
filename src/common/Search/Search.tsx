@@ -15,10 +15,10 @@ const Input = styled.input.attrs((props) => ({
   padding: ${(props) => props.size};
 `;
 
-const Search = (props) => {
+const Search = (props: { queryValue: any; page: any; }) => {
   const {queryValue, page} = props
   const [searchValue, setSearchValue] = useState("");
-  const handleSearch = (e) => {
+  const handleSearch = (e: { target: { value: string; }; }) => {
     if (e.target.value) {
       setSearchValue(e.target.value)
       queryValue(e.target.value)
@@ -32,7 +32,7 @@ const Search = (props) => {
     <WrapperDiv data-testid="search">
       <Input
         placeholder="Enter your movie name"
-        onChange={(e) => handleSearch(e)}
+        onChange={(e: any) => handleSearch(e)}
         value={searchValue}
       />
     </WrapperDiv>

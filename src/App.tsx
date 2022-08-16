@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <div data-testid="app">
       <Routes>
-        <Route exact path="/" element={<MovieList />} />
+        <Route path="/" element={<MovieList />} />
         <Route path="/OMDB_Movie_Search" element={<MovieList />} />
         <Route path="/:id" element={<MovieDetails />} />
         <Route path="*" element={<PageNotFound />} />

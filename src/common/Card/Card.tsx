@@ -5,7 +5,7 @@ import * as AppConstants from "../../AppConstants";
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-content:space-between;
+  justify-content: space-between;
   @media only screen and (max-width: 600px) {
     display: flex;
     flex-wrap: wrap;
@@ -18,11 +18,35 @@ const CardContent = styled.div`
   background-color: DimGray;
   margin: 1rem;
   @media only screen and (max-width: 600px) {
-    flex: auto
+    flex: auto;
   }
 `;
-const Card = (props) => {
-  const returnCard = (card) => {
+const Card = (props: {
+  poster: any[];
+  letRef: React.LegacyRef<HTMLDivElement> | undefined;
+}) => {
+  const returnCard = (card: {
+    imdbID: any;
+    Title:
+      | string
+      | number
+      | boolean
+      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      | React.ReactFragment
+      | React.ReactPortal
+      | null
+      | undefined;
+    Poster: string | undefined;
+    Year:
+      | string
+      | number
+      | boolean
+      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      | React.ReactFragment
+      | React.ReactPortal
+      | null
+      | undefined;
+  }) => {
     return (
       <CardContent>
         {
@@ -54,21 +78,25 @@ const Card = (props) => {
     );
   };
   return (
-    props.poster.length > 0 && (
-      <CardWrapper>
-        {props.poster.map((card, index) => {
-          if (props.poster.length === index + 1) {
-            return (
-              <div key={card.imdbID} ref={props.letRef}>
-                {returnCard(card)}
-              </div>
-            );
-          } else {
-            return <div key={card.imdbID}>{returnCard(card)}</div>;
-          }
-        })}
-      </CardWrapper>
-    )
+    props.poster.length > 0 ? (
+      <>
+        {
+          <CardWrapper>
+            {props.poster.map((card, index) => {
+              if (props.poster.length === index + 1) {
+                return (
+                  <div key={card.imdbID} ref={props.letRef}>
+                    {returnCard(card)}
+                  </div>
+                );
+              } else {
+                return <div key={card.imdbID}>{returnCard(card)}</div>;
+              }
+            })}
+          </CardWrapper>
+        }
+      </>
+    ) : null
   );
 };
 export default Card;

@@ -6,12 +6,12 @@ import Card from "../../common/Card/Card";
 import Loader from "../../common/Loader/Loader";
 import useMovieSearch from "../../common/useMovieSearch";
 const MovieList = () => {
-  const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  const [query, setQuery] = useState<string>("");
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const { movies, hasMore, loading, error } = useMovieSearch(query, pageNumber);
-  const observer = useRef();
+  const observer = useRef<any>();
   const lastBookElementRef = useCallback(
-    (node) => {
+    (node: any) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
@@ -24,10 +24,10 @@ const MovieList = () => {
     [loading, hasMore, error]
   );
 
-  const getQueryValue = (value) => {
+  const getQueryValue = (value: string) => {
     setQuery(value);
   };
-  const getPageNumber = (value) => {
+  const getPageNumber = (value: number) => {
     setPageNumber(value);
   };
   return (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import * as AppConstants from "../AppConstants";
 
-export default function useMovieSearch(query, pageNumber) {
+export default function useMovieSearch(query: string, pageNumber: number) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -14,7 +14,7 @@ export default function useMovieSearch(query, pageNumber) {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    let cancel;
+    let cancel: any;
     axios({
       method: "GET",
       url: `${AppConstants.URL}${AppConstants.API_KEY}&s=${query}&type=movie`,
@@ -22,7 +22,7 @@ export default function useMovieSearch(query, pageNumber) {
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
-        setMovies(res.data.Search.filter((data, index) => res.data.Search.indexOf(data) === index));
+        setMovies(res.data.Search.filter((data: object, index: number) => res.data.Search.indexOf(data) === index));
         setHasMore(res.data.totalResults.length > 0);
         setLoading(false);
       })

@@ -3,27 +3,29 @@
 exports[`movie list test suite movie list snapshot test 1`] = `
 Array [
   <nav
-    className="fRzOdK"
+    className="bzUqNu"
   >
-    <h1>
-      OMDB Movie Search
+    <h1
+      className="kNcxAv"
+    >
+      OMDB Search
     </h1>
   </nav>,
   <div
-    className="cknwjs"
+    className="bppYUA"
     data-testid="search"
   >
     <input
-      className="jAZpoL"
+      className="FEDUP"
       onChange={[Function]}
       placeholder="Enter your movie name"
-      size="1em"
-      type="text"
+      size="1rem"
+      type="search"
       value=""
     />
   </div>,
   <div
-    className="WpVzY"
+    className="tjMdN"
   />,
 ]
 `;

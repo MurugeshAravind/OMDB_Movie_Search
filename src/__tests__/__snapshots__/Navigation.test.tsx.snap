@@ -2,10 +2,12 @@
 
 exports[`navigation test nav snapshot test 1`] = `
 <nav
-  className="fRzOdK"
+  className="bzUqNu"
 >
-  <h1>
-    OMDB Movie Search
+  <h1
+    className="kNcxAv"
+  >
+    OMDB Search
   </h1>
 </nav>
 `;

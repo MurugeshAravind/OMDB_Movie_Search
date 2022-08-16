@@ -55,19 +55,32 @@ const WrapperDiv = styled.div`
     text-align: center;
   }
 `;
+interface MovieDetailsInterface {
+  Title?: string;
+  Poster?: string;
+  Year?: string;
+  Rated?: string;
+  Genre?: string;
+  Actors?: string;
+  Director?: string;
+  Writer?: string;
+  imdbRating?: string;
+  Plot?: string;
+  Awards?: string;
+}
 const MovieDetails = () => {
-  const { id } = useParams("id");
-  const [movieDetails, setMovieDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { id } = useParams();
+  const [movieDetails, setMovieDetails] = useState<MovieDetailsInterface | any>(
+    []
+  );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
     async function fetchMovieDetails() {
       setIsLoading(true);
-      let movieDetails = await FetchData(
-        {
-          method: "GET",
-          url: `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`
-        }
-      );
+      let movieDetails = await FetchData({
+        method: "GET",
+        url: `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`,
+      });
       setIsLoading(false);
       if (
         movieDetails.data.Response === "True" &&
@@ -110,7 +123,7 @@ const MovieDetails = () => {
         <p>
           <strong>Genre:</strong>&nbsp;
           {movieDetails.Genre.split(",").length > 0 ? (
-            movieDetails.Genre.split(",").map((x) => (
+            movieDetails.Genre.split(",").map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
@@ -123,7 +136,7 @@ const MovieDetails = () => {
         <p>
           <strong>Actors:</strong>&nbsp;
           {movieDetails.Actors.split(",").length > 0 ? (
-            movieDetails.Actors.split(",").map((x) => (
+            movieDetails.Actors.split(",").map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
@@ -133,7 +146,7 @@ const MovieDetails = () => {
         <p>
           <strong>Director/ Directors:</strong>&nbsp;
           {movieDetails.Director.split(",").length > 0 ? (
-            movieDetails.Director.split(",").map((x) => (
+            movieDetails.Director.split(",").map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
@@ -142,8 +155,8 @@ const MovieDetails = () => {
         </p>
         <p>
           <strong>Writer/ Writers:</strong>&nbsp;
-          {movieDetails.Writer.split(",").length > 0 ? (
-            movieDetails.Writer.split(",").map((x) => (
+          {movieDetails?.Writer.split(",").length > 0 ? (
+            movieDetails?.Writer.split(",").map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
@@ -152,7 +165,7 @@ const MovieDetails = () => {
         </p>
         <p>
           <strong>
-            Awards:&nbsp;<Button>{movieDetails.Awards}</Button>
+            Awards:&nbsp;<Button>{movieDetails?.Awards}</Button>
           </strong>
         </p>
         <p>
@@ -160,14 +173,13 @@ const MovieDetails = () => {
           <Button>
             <meter
               id="rating"
-              name="name"
               min=""
-              low="3"
-              high="9"
-              max="10"
-              value={movieDetails.imdbRating}
+              low={3}
+              high={9}
+              max={10}
+              value={movieDetails?.imdbRating}
             ></meter>
-            &nbsp;{`${movieDetails.imdbRating}`}
+            &nbsp;{`${movieDetails?.imdbRating}`}
           </Button>
         </p>
       </WrapperDiv>

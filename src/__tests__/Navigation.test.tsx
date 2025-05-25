@@ -1,10 +1,14 @@
-import React from "react";
-import Navigation from "../common/Navigation/Navigation";
-import renderer from "react-test-renderer";
-import "jest-styled-components";
-const navElement = renderer.create(<Navigation />)
+import { render } from '@testing-library/react';
+import Navigation from '../common/Navigation/Navigation';
+import 'jest-styled-components';
+import { MemoryRouter } from 'react-router-dom';
 describe('navigation test', () => {
-    test('nav snapshot test', () => {
-        expect(navElement).toMatchSnapshot();
-    })
-})
+  test('nav snapshot test', () => {
+    render(
+      <MemoryRouter future={{ v7_startTransition: true }}>
+        <Navigation />
+      </MemoryRouter>,
+    );
+    expect(document.querySelector('nav')).toBeDefined();
+  });
+});

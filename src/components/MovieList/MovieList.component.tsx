@@ -1,12 +1,11 @@
-import React from "react";
-import { useState, useRef, useCallback } from "react";
-import Navigation from "../../common/Navigation/Navigation";
-import Search from "../../common/Search/Search";
-import Card from "../../common/Card/Card";
-import Loader from "../../common/Loader/Loader";
-import useMovieSearch from "../../common/useMovieSearch";
+import { useState, useRef, useCallback } from 'react';
+import Navigation from '../../common/Navigation/Navigation';
+import Search from '../../common/Search/Search';
+import Card from '../../common/Card/Card';
+import Loader from '../../common/Loader/Loader';
+import useMovieSearch from '../../common/useMovieSearch';
 const MovieList = () => {
-  const [query, setQuery] = useState<string>("");
+  const [query, setQuery] = useState<string>('');
   const [pageNumber, setPageNumber] = useState<number>(1);
   const { movies, hasMore, loading, error } = useMovieSearch(query, pageNumber);
   const observer = useRef<any>();
@@ -21,7 +20,7 @@ const MovieList = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore, error]
+    [loading, hasMore, error],
   );
 
   const getQueryValue = (value: string) => {

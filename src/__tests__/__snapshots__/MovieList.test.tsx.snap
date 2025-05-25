@@ -1,31 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`movie list test suite movie list snapshot test 1`] = `
-Array [
-  <nav
-    className="bzUqNu"
-  >
-    <h1
-      className="kNcxAv"
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <nav
+        class="dZuuai"
+      >
+        <h1
+          class="bHFXsR"
+        >
+          OMDB Search
+        </h1>
+      </nav>
+      <div
+        class="bpjZGj"
+      >
+        <input
+          class="gdZrxl"
+          data-testid="search-input"
+          placeholder="Enter your movie name"
+          type="search"
+          value=""
+        />
+      </div>
+      <div
+        class="btoief"
+      />
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      class="dZuuai"
     >
-      OMDB Search
-    </h1>
-  </nav>,
-  <div
-    className="bppYUA"
-    data-testid="search"
-  >
-    <input
-      className="FEDUP"
-      onChange={[Function]}
-      placeholder="Enter your movie name"
-      size="1rem"
-      type="search"
-      value=""
+      <h1
+        class="bHFXsR"
+      >
+        OMDB Search
+      </h1>
+    </nav>
+    <div
+      class="bpjZGj"
+    >
+      <input
+        class="gdZrxl"
+        data-testid="search-input"
+        placeholder="Enter your movie name"
+        type="search"
+        value=""
+      />
+    </div>
+    <div
+      class="btoief"
     />
   </div>,
-  <div
-    className="tjMdN"
-  />,
-]
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

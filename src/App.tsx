@@ -1,18 +1,31 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import MovieList from "./components/MovieList/MovieList.component";
-import MovieDetails from "./components/MovieDetails/MovieDetails.component";
-import PageNotFound from "./common/PageNotFound/PageNotFound";
-export const App = () => {
+import MovieList from './components/MovieList/MovieList.component';
+import MovieDetails from './components/MovieDetails/MovieDetails.component';
+import PageNotFound from './common/PageNotFound/PageNotFound';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <MovieList />,
+  },
+  {
+    path: '/:id',
+    element: <MovieDetails />,
+  },
+  {
+    path: '/OMDB_Movie_Search',
+    element: <MovieList />,
+  },
+  {
+    path: '*',
+    element: <PageNotFound />,
+  },
+]);
+
+function App() {
   return (
-    <div data-testid="app">
-      <Routes>
-        <Route path="/" element={<MovieList />} />
-        <Route path="/OMDB_Movie_Search" element={<MovieList />} />
-        <Route path="/:id" element={<MovieDetails />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </div>
+    <RouterProvider router={router} future={{ v7_startTransition: true }} />
   );
 }
 
+export default App;

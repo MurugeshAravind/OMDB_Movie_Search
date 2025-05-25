@@ -1,39 +1,48 @@
-import React, {useState} from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 const WrapperDiv = styled.div`
   display: grid;
   justify-content: center;
   align-items: center;
 `;
 const Input = styled.input.attrs((props) => ({
-  type: "search",
-  size: props.size || "1rem",
-  value: props.value || "",
+  type: 'search',
+  size: '1rem',
+  value: props.value || '',
 }))`
   border: 2px solid palevioletred;
   margin: ${(props) => props.size};
   padding: ${(props) => props.size};
 `;
 
-const Search = (props: { queryValue: any; page: any; }) => {
-  const {queryValue, page} = props
-  const [searchValue, setSearchValue] = useState("");
-  const handleSearch = (e: { target: { value: string; }; }) => {
-    if (e.target.value) {
-      setSearchValue(e.target.value)
-      queryValue(e.target.value)
-      page(1)
+type SearchProps = {
+  queryValue: (value: string) => void;
+  page: (value: number) => void;
+};
+
+const Search = (props: SearchProps) => {
+  const { queryValue, page } = props;
+  console.log({ queryValue, page });
+  const [searchValue, setSearchValue] = useState('');
+  const handleSearch = (e: any) => {
+    const { value } = e.target;
+    if (value && value.length > 0) {
+      setSearchValue(value);
+      queryValue(value);
+      page(1);
     } else {
-      setSearchValue("")
-      queryValue("")
-    }  
+      setSearchValue('');
+      queryValue('');
+      page(1);
+    }
   };
   return (
-    <WrapperDiv data-testid="search">
+    <WrapperDiv>
       <Input
         placeholder="Enter your movie name"
         onChange={(e: any) => handleSearch(e)}
         value={searchValue}
+        data-testid="search-input"
       />
     </WrapperDiv>
   );

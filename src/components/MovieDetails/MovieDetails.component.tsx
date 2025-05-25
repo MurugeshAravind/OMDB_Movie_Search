@@ -1,10 +1,9 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
-import FetchData from "../../common/Api/FetchData";
-import Loader from "../../common/Loader/Loader";
-import * as AppConstants from "../../AppConstants";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import FetchData from '../../common/Api/FetchData';
+import Loader from '../../common/Loader/Loader';
+import * as AppConstants from '../../AppConstants';
 const Heading = styled.h1`
   text-align: center;
   color: silver;
@@ -12,7 +11,7 @@ const Heading = styled.h1`
 const Post = styled.img.attrs((props) => ({
   src: props.src || AppConstants.DUMMY_IMAGE_PATH,
 }))`
-  alt: "Poster";
+  alt: 'Poster';
   background-color: black;
   border: solid 1px black;
   @media screen and (max-width: 600px) {
@@ -71,22 +70,23 @@ interface MovieDetailsInterface {
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieDetailsInterface | any>(
-    []
+    [],
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
+    if (!id) return;
     async function fetchMovieDetails() {
       setIsLoading(true);
       let movieDetails = await FetchData({
-        method: "GET",
+        method: 'GET',
         url: `${AppConstants.URL}${AppConstants.API_KEY}&i=${id}`,
       });
       setIsLoading(false);
       if (
-        movieDetails.data.Response === "True" &&
-        Object.keys(movieDetails.data).length > 0
+        movieDetails?.data.Response === 'True' &&
+        Object.keys(movieDetails?.data).length > 0
       ) {
-        setMovieDetails(movieDetails.data);
+        setMovieDetails(movieDetails?.data);
       }
     }
     fetchMovieDetails();
@@ -94,18 +94,18 @@ const MovieDetails = () => {
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
     <div data-testid="details">
       <WrapperDiv>
-        <Link to={{ pathname: "/OMDB_Movie_Search" }}>
+        <Link to={{ pathname: '/' }}>
           <big>
             <strong>Home</strong>
           </big>
         </Link>
-        <Heading>{movieDetails.Title}</Heading>
+        <Heading>{movieDetails?.Title}</Heading>
       </WrapperDiv>
       <WrapperDiv>
         <Post
           src={
-            movieDetails.Poster !== "N/A"
-              ? movieDetails.Poster
+            movieDetails?.Poster !== 'N/A'
+              ? movieDetails?.Poster
               : AppConstants.DUMMY_IMAGE_PATH
           }
         />
@@ -114,53 +114,53 @@ const MovieDetails = () => {
       <WrapperDiv>
         <p>
           <strong>Year:</strong>&nbsp;
-          {<Button key={movieDetails.Year}>{movieDetails.Year}</Button>}
+          {<Button key={movieDetails?.Year}>{movieDetails?.Year}</Button>}
         </p>
         <p>
           <strong>Rated:</strong>&nbsp;
-          {<Button key={movieDetails.Rated}>{movieDetails.Rated}</Button>}
+          {<Button key={movieDetails?.Rated}>{movieDetails?.Rated}</Button>}
         </p>
         <p>
           <strong>Genre:</strong>&nbsp;
-          {movieDetails.Genre.split(",").length > 0 ? (
-            movieDetails.Genre.split(",").map((x: any) => (
+          {movieDetails?.Genre?.split(',').length > 0 ? (
+            movieDetails?.Genre?.split(',').map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
-            <Button>{movieDetails.Genre}</Button>
+            <Button>{movieDetails?.Genre}</Button>
           )}
         </p>
         <p>
-          <strong>Plot:</strong>&nbsp;{movieDetails.Plot}
+          <strong>Plot:</strong>&nbsp;{movieDetails?.Plot}
         </p>
         <p>
           <strong>Actors:</strong>&nbsp;
-          {movieDetails.Actors.split(",").length > 0 ? (
-            movieDetails.Actors.split(",").map((x: any) => (
+          {movieDetails?.Actors?.split(',').length > 0 ? (
+            movieDetails?.Actors?.split(',').map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
-            <Button>{movieDetails.Actors}</Button>
+            <Button>{movieDetails?.Actors}</Button>
           )}
         </p>
         <p>
           <strong>Director/ Directors:</strong>&nbsp;
-          {movieDetails.Director.split(",").length > 0 ? (
-            movieDetails.Director.split(",").map((x: any) => (
+          {movieDetails?.Director?.split(',').length > 0 ? (
+            movieDetails?.Director?.split(',').map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
-            <Button>{movieDetails.Director}</Button>
+            <Button>{movieDetails?.Director}</Button>
           )}
         </p>
         <p>
           <strong>Writer/ Writers:</strong>&nbsp;
-          {movieDetails?.Writer.split(",").length > 0 ? (
-            movieDetails?.Writer.split(",").map((x: any) => (
+          {movieDetails?.Writer?.split(',').length > 0 ? (
+            movieDetails?.Writer?.split(',').map((x: any) => (
               <Button key={x}>{x}</Button>
             ))
           ) : (
-            <Button>{movieDetails.Writer}</Button>
+            <Button>{movieDetails?.Writer}</Button>
           )}
         </p>
         <p>

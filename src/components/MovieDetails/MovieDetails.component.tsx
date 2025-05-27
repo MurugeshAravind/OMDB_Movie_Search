@@ -74,7 +74,6 @@ const MovieDetails = () => {
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
-    if (!id) return;
     async function fetchMovieDetails() {
       setIsLoading(true);
       let movieDetails = await FetchData({

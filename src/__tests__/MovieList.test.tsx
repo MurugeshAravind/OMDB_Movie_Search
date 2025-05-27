@@ -124,4 +124,16 @@ describe('movie list test suite', () => {
     jest.runAllTimers();
     expect(input).toHaveValue('test');
   });
+  test('updates search query on user input', async () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <MovieList />
+      </MemoryRouter>,
+    );
+
+    const input = getByTestId('search-input');
+    fireEvent.change(input, { target: { value: 'Batman' } });
+
+    expect(input).toHaveValue('Batman');
+  });
 });

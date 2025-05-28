@@ -1,13 +1,8 @@
-import styled from 'styled-components';
-const NotFoundPage = styled.h3`
-  margin: auto;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
 const PageNotFound = () => {
-  return <NotFoundPage>Oops Page Not Found!...</NotFoundPage>;
+  return (
+    <h3 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-auto text-center">
+      Oops Page Not Found!...
+    </h3>
+  );
 };
 export default PageNotFound;

@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import useMovieSearch from './useMovieSearch';
 import axios from 'axios';
 

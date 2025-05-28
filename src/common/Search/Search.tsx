@@ -1,19 +1,4 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-const WrapperDiv = styled.div`
-  display: grid;
-  justify-content: center;
-  align-items: center;
-`;
-const Input = styled.input.attrs((props) => ({
-  type: 'search',
-  size: '1rem',
-  value: props.value || '',
-}))`
-  border: 2px solid palevioletred;
-  margin: ${(props) => props.size};
-  padding: ${(props) => props.size};
-`;
 
 type SearchProps = {
   queryValue: (value: string) => void;
@@ -22,7 +7,6 @@ type SearchProps = {
 
 const Search = (props: SearchProps) => {
   const { queryValue, page } = props;
-  console.log({ queryValue, page });
   const [searchValue, setSearchValue] = useState('');
   const handleSearch = (e: any) => {
     const { value } = e.target;
@@ -37,14 +21,16 @@ const Search = (props: SearchProps) => {
     }
   };
   return (
-    <WrapperDiv>
-      <Input
+    <div className="grid justify-center items-center">
+      <input
+        type="search"
         placeholder="Enter your movie name"
-        onChange={(e: any) => handleSearch(e)}
+        onChange={handleSearch}
         value={searchValue}
         data-testid="search-input"
+        className="border-2 border-pink-300 m-4 p-4 rounded focus:outline-none focus:border-pink-500 transition"
       />
-    </WrapperDiv>
+    </div>
   );
 };
 export default Search;

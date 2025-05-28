@@ -1,59 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import FetchData from '../../common/Api/FetchData';
 import Loader from '../../common/Loader/Loader';
 import * as AppConstants from '../../AppConstants';
-const Heading = styled.h1`
-  text-align: center;
-  color: silver;
-`;
-const Post = styled.img.attrs((props) => ({
-  src: props.src || AppConstants.DUMMY_IMAGE_PATH,
-}))`
-  alt: 'Poster';
-  background-color: black;
-  border: solid 1px black;
-  @media screen and (max-width: 600px) {
-    display: block;
-    margin: 0 auto;
-    padding: 0;
-    width: 175px;
-  }
-`;
-const Button = styled.button`
-  background-color: #ccc;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 0.5rem;
-  border-radius: 16px;
-  clear: right;
-  @media screen and (max-width: 600px) {
-    display: block;
-    margin: 1rem auto;
-  }
-  @media screen and (min-width: 600px) {
-    display: block;
-    margin: 1rem auto;
-  }
-`;
-const WrapperDiv = styled.div`
-  display: block;
-  margin: 2rem;
-  text-align: center;
-  @media screen and (max-width: 600px) {
-    display: block;
-    text-align: center;
-  }
-  @media screen and (min-width: 600px) {
-    display: block;
-    text-align: center;
-  }
-`;
+
 interface MovieDetailsInterface {
   Title?: string;
   Poster?: string;
@@ -67,12 +17,14 @@ interface MovieDetailsInterface {
   Plot?: string;
   Awards?: string;
 }
+
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState<MovieDetailsInterface | any>(
     [],
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     async function fetchMovieDetails() {
       setIsLoading(true);
@@ -90,43 +42,59 @@ const MovieDetails = () => {
     }
     fetchMovieDetails();
   }, [id]);
+
   return !isLoading && movieDetails && Object.keys(movieDetails).length > 0 ? (
     <div data-testid="details">
-      <WrapperDiv>
-        <Link to={{ pathname: '/' }}>
-          <big>
-            <strong>Home</strong>
-          </big>
+      <div className="block m-8 text-center">
+        <Link
+          to="/"
+          className="text-blue-600 hover:underline text-lg font-bold"
+        >
+          Home
         </Link>
-        <Heading>{movieDetails?.Title}</Heading>
-      </WrapperDiv>
-      <WrapperDiv>
-        <Post
+        <h1 className="text-center text-[2rem] text-silver font-bold mt-4 mb-8">
+          {movieDetails?.Title}
+        </h1>
+      </div>
+      <div className="block m-8 text-center">
+        <img
           src={
             movieDetails?.Poster !== 'N/A'
               ? movieDetails?.Poster
               : AppConstants.DUMMY_IMAGE_PATH
           }
+          alt="Poster"
+          className="mx-auto bg-black border border-black rounded-lg w-[300px] max-w-full sm:w-[175px]"
         />
-      </WrapperDiv>
-
-      <WrapperDiv>
+      </div>
+      <div className="block m-8 text-center">
         <p>
           <strong>Year:</strong>&nbsp;
-          {<Button key={movieDetails?.Year}>{movieDetails?.Year}</Button>}
+          <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+            {movieDetails?.Year}
+          </span>
         </p>
         <p>
           <strong>Rated:</strong>&nbsp;
-          {<Button key={movieDetails?.Rated}>{movieDetails?.Rated}</Button>}
+          <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+            {movieDetails?.Rated}
+          </span>
         </p>
         <p>
           <strong>Genre:</strong>&nbsp;
           {movieDetails?.Genre?.split(',').length > 0 ? (
             movieDetails?.Genre?.split(',').map((x: any) => (
-              <Button key={x}>{x}</Button>
+              <span
+                key={x}
+                className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2"
+              >
+                {x}
+              </span>
             ))
           ) : (
-            <Button>{movieDetails?.Genre}</Button>
+            <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+              {movieDetails?.Genre}
+            </span>
           )}
         </p>
         <p>
@@ -136,40 +104,64 @@ const MovieDetails = () => {
           <strong>Actors:</strong>&nbsp;
           {movieDetails?.Actors?.split(',').length > 0 ? (
             movieDetails?.Actors?.split(',').map((x: any) => (
-              <Button key={x}>{x}</Button>
+              <span
+                key={x}
+                className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2"
+              >
+                {x}
+              </span>
             ))
           ) : (
-            <Button>{movieDetails?.Actors}</Button>
+            <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+              {movieDetails?.Actors}
+            </span>
           )}
         </p>
         <p>
           <strong>Director/ Directors:</strong>&nbsp;
           {movieDetails?.Director?.split(',').length > 0 ? (
             movieDetails?.Director?.split(',').map((x: any) => (
-              <Button key={x}>{x}</Button>
+              <span
+                key={x}
+                className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2"
+              >
+                {x}
+              </span>
             ))
           ) : (
-            <Button>{movieDetails?.Director}</Button>
+            <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+              {movieDetails?.Director}
+            </span>
           )}
         </p>
         <p>
           <strong>Writer/ Writers:</strong>&nbsp;
           {movieDetails?.Writer?.split(',').length > 0 ? (
             movieDetails?.Writer?.split(',').map((x: any) => (
-              <Button key={x}>{x}</Button>
+              <span
+                key={x}
+                className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2"
+              >
+                {x}
+              </span>
             ))
           ) : (
-            <Button>{movieDetails?.Writer}</Button>
+            <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+              {movieDetails?.Writer}
+            </span>
           )}
         </p>
         <p>
           <strong>
-            Awards:&nbsp;<Button>{movieDetails?.Awards}</Button>
+            Awards:&nbsp;
+            <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
+              {movieDetails?.Awards}
+            </span>
           </strong>
         </p>
         <p>
           <strong>OMDB Rating:</strong>
-          <Button>
+          <span className="inline-block bg-gray-300 text-black px-4 py-2 rounded-2xl m-2">
             <meter
               id="rating"
               min=""
@@ -179,12 +171,13 @@ const MovieDetails = () => {
               value={movieDetails?.imdbRating}
             ></meter>
             &nbsp;{`${movieDetails?.imdbRating}`}
-          </Button>
+          </span>
         </p>
-      </WrapperDiv>
+      </div>
     </div>
   ) : (
     <Loader />
   );
 };
+
 export default MovieDetails;

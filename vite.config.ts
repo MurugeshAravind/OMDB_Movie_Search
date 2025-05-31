@@ -17,5 +17,8 @@ export default defineConfig({
   base: '/OMDB_Movie_Search/', // Set the base path for the application
   build: {
     outDir: 'build', // Match CRA's default build output
+    rollupOptions: {
+      external: [],
+    },
   },
 });

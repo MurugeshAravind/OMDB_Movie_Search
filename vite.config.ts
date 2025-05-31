@@ -8,10 +8,14 @@ export default defineConfig({
     externalizeDeps({
       except: ['@tailwindcss/vite', /^@tailwindcss(?:\/.+)?$/],
     }),
-    react(),
+    react({
+      jsxRuntime: 'classic',
+    }),
     tailwindcss(),
   ],
-  base: '/OMDB_Movie_Search', // Use relative paths for assets
+  optimizeDeps: {
+    include: ['react/jsx-runtime'],
+  },
   build: {
     outDir: 'build', // Match CRA's default build output
   },

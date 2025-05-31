@@ -11,6 +11,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: '/OMDB_Movie_Search', // Use relative paths for assets
   build: {
     outDir: 'build', // Match CRA's default build output
   },

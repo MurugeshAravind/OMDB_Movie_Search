@@ -47,7 +47,7 @@ const MovieDetails = () => {
     <div data-testid="details">
       <div className="block m-8 text-center">
         <Link
-          to="/"
+          to="/OMDB_Movie_Search/"
           className="text-blue-600 hover:underline text-lg font-bold"
         >
           Home

@@ -55,8 +55,3 @@ You may need an OMDb API key. Set it as an environment variable or in a configur
 MIT (or specify your license here)
 
 ---
-
-For a full list of files and details, visit the repo:  
-https://github.com/MurugeshAravind/OMDB_Movie_Search/tree/main
-
-Let me know if you want the README tailored for a specific frontend framework, with API usage examples, or more technical details!
